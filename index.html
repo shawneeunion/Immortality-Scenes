@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+
+<input type="text" id="searchBox" placeholder="Search the table...">
+<table id="myTable">
+  <tr class="header">
+    <th style="width:10%;">Scene</th>
+    <th style="width:10%;">Date</th>
+    <th style="width:30%;">Description</th>
+    <th style="width:22.5%;">People</th>
+    <th style="width:22.5%;">Objects</th>
+    <th style="width:5%;">Found</th>
+  </tr>
+  <tr>
+    <td>Ambrosia</td>
+    <td>1968.02.10</td>
+    <td>Soap Commercial</td>
+    <td>Marissa Marcel</td>
+    <td>Soap</td>
+    <td><input type="checkbox" name="name1" />&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Ambrosia</td>
+    <td>1968.04.15</td>
+    <td>Penelope Audition</td>
+    <td>Penelope</td>
+    <td>Chair, Cross</td>
+    <td><input type="checkbox" name="name1" />&nbsp;</td>
+  <tr>
+    <td>Ambrosia</td>
+    <td>1968.04.15</td>
+    <td>Sofia Audition</td>
+    <td>Sofia</td>
+    <td>Chair, Cigarette</td>
+    <td><input type="checkbox" name="name1" />&nbsp;</td>
+  </tr>
+    <td>Ambrosia</td>
+    <td>1968.04.15</td>
+    <td>Marissa Audition</td>
+    <td>Marissa Marcel</td>
+    <td>Chair</td>
+    <td><input type="checkbox" name="name1" />&nbsp;</td>
+  </tr>
+  </tr>
+    <td>Ambrosia</td>
+    <td>1968.04.22</td>
+    <td>Marissa and Robert chemistry test</td>
+    <td>Marissa Marcel, Robert Jones</td>
+    <td>Clapperboard, Holding Hands, Script, Watch</td>
+    <td><input type="checkbox" name="name1" />&nbsp;</td>
+  </tr>
+</table>
+
+<script>
+function performSearch() {
+
+  // Declare search string
+  var filter = searchBox.value.toUpperCase();
+
+  // Loop through first tbody's rows
+  for (var rowI = 0; rowI < trs.length; rowI++) {
+
+    // define the row's cells
+    var tds = trs[rowI].getElementsByTagName("td");
+
+    // hide the row
+    trs[rowI].style.display = "none";
+
+    // loop through row cells
+    for (var cellI = 0; cellI < tds.length; cellI++) {
+
+      // if there's a match
+      if (tds[cellI].innerHTML.toUpperCase().indexOf(filter) > -1) {
+
+        // show the row
+        trs[rowI].style.display = "";
+
+        // skip to the next row
+        continue;
+
+      }
+    }
+  }
+
+}
+
+// declare elements
+const searchBox = document.getElementById('searchBox');
+const table = document.getElementById("myTable");
+const trs = table.tBodies[0].getElementsByTagName("tr");
+
+// add event listener to search box
+searchBox.addEventListener('keyup', performSearch);
+</script>
+
+  </body>
+</html>
